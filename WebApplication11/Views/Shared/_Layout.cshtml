@@ -1,0 +1,72 @@
+﻿@using WebApplication11.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Vortex</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="~/Home/Index">
+                    <img src="~/Image/vortex.png" /></a>        
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Special", "Specials", "Products")</li>
+                        <li>@Html.ActionLink("Recommendations and Feedback", "Index", "RecFBs")</li>
+                    }
+                    else if (Session["AdminStatus"] != null)
+                    {
+                         <li>@Html.ActionLink("Special", "Specials", "Products")</li>
+                         <li>@Html.ActionLink("Recommendations and Feedback", "Index", "RecFBs")</li>
+                    }
+                    <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class=" nav nav-sidebar">
+                    <li>@Html.Label("Category Name")</li>
+
+                @foreach (var item in (List<Category>)ViewBag.Categories)
+                {
+                    <li>
+                        @Html.ActionLink(item.CategoryName, "DetailByCategory", "Products", new { id = item.CategoryNo}, null)
+                    </li>
+                }
+                </ul>
+            </div>
+            <div class="col-md-11 col-md-offset-1 main">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Vortex Application</p>
+                </footer>
+            </div>
+        
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

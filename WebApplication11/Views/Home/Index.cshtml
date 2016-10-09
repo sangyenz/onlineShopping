@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h3>Welcome To Vortex</h3>
+        <p>
+            Vortex is a newly established Fitness Equipment Store which prides itself on having a wide range of fitness and performance training equipment and apparels.
+        </p>
+    </div>
+</div>
+<br />
+<br />
+
+<!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="dark-indicator active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+        <li data-target="#myCarousel" data-slide-to="5"></li>
+        <li data-target="#myCarousel" data-slide-to="6"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img class="first-slide" src="@Url.Content("~/Image/Treadmills.jpg")" alt="Treadmills">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Treadmills</h1>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img class="second-slide" src="@Url.Content("~/Image/Dumbbells.jpg")" alt="Dumbbells">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Dumbbells</h1>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img class="third-slide" src="@Url.Content("~/Image/Weights.jpg")" alt="Weights">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Weights</h1>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img class="fourth-slide" src="@Url.Content("~/Image/ExerciseBike.jpg")" alt="Exercise Bike">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Exercise Bike</h1>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img class="fifth-slide" src="@Url.Content("~/Image/RowingMachine.jpg")" alt="Rowing Machine">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Rowing Machine</h1>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img class="sixth-slide" src="@Url.Content("~/Image/FitnessApparel.jpg")" alt="Fitness Apparel">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Fitness Apparel</h1>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img class="seventh-slide" src="@Url.Content("~/Image/Footwear.jpg")" alt="Footwear">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Footwear</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div><!-- /.carousel -->
+
+<script type="text/javascript">
+        @if (TempData["Confirm"]!=null &&(bool)TempData["Confirm"]) {
+            @:alert("Thank you for sending us message!");
+        }
+</script>

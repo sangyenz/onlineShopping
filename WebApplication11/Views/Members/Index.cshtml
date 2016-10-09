@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebApplication11.Models.Member>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Session["AdminStatus"] != null)
+{
+<h2>Customers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SurName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastLogin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CancelFlg)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastLogin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CancelFlg)
+        </td>
+        @if (Session["AdminStatus"] != null)
+        {
+        <td> 
+            @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.MemberId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MemberId })
+        </td>
+        }
+    </tr>
+}
+</table>
+<p>
+    @Html.ActionLink("Back to System Management", "Index", "Administrators")
+</p>
+}

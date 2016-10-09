@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication11.Models.Administrator>
+
+@{
+    ViewBag.Title = "System Management";
+}
+
+<h2>System Management</h2>
+
+@if (Session["AdminStatus"] != null)
+{   <div class="row">
+        <div class="col-md-12">
+            <h3>Customer Manegement</h3>
+            <p>
+                @Html.ActionLink("View Customer", "Index", "Members")
+            </p>
+        </div>
+        <div class="col-md-12">
+            <h3>Category Management</h3>
+            <p>
+                @Html.ActionLink("View Category", "Index", "Categories")
+            </p>
+        </div>
+        <div class="col-md-12">
+            <h3>Product Management</h3>
+            <p>
+                @Html.ActionLink("View Product", "Index", "Products")
+            </p>
+        </div>
+        <div class="col-md-12">
+            <h3>News Management</h3>
+            <p>
+                @Html.ActionLink("View News", "Index", "News")
+            </p>
+        </div>
+        <div class="col-md-12">
+            <h3>Recommendations and Feedback Management</h3>
+            <p>
+                @Html.ActionLink("View Recommendations and Feedback", "Index", "RecFBs")
+            </p>
+        </div>
+    </div>
+}
+else{ 
+    <li>@Html.ActionLink("Please Login", "Login")</li>
+}
+

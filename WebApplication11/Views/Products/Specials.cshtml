@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebApplication11.Models.Product>
+@using PagedList.Mvc;
+@using PagedList
+
+
+@{
+    ViewBag.Title = ViewBag.CategoryName;
+}
+
+<h2>@ViewBag.CategoryName</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        @if (Request.IsAuthenticated)
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.MemberPrice)
+            </th>
+        }
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Url.Content("~/Image/" + item.Picture)" height="100" width="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            @if (Request.IsAuthenticated)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.MemberPrice)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("DetailByCategory", new { page }))
